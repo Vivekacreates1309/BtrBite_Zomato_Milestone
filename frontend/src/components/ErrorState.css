@@ -1,0 +1,41 @@
+.error-state {
+  text-align: center;
+  padding: var(--space-16) var(--margin-mobile);
+  animation: fadeUp 0.5s ease both;
+}
+
+.error-icon {
+  font-size: 56px;
+  margin-bottom: var(--space-6);
+}
+
+.error-state h3 {
+  color: var(--error);
+  margin-bottom: var(--space-3);
+}
+
+.error-desc {
+  color: var(--text-muted);
+  max-width: 420px;
+  margin: 0 auto var(--space-6);
+}
+
+.retry-btn {
+  padding: var(--space-3) var(--space-8);
+  border-radius: var(--rounded-full);
+  border: 1px solid var(--glass-border-hover);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  color: var(--on-surface);
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.retry-btn:hover {
+  background: var(--glass-bg-hover);
+  transform: scale(1.02);
+  box-shadow: var(--glow-secondary);
+}

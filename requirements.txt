@@ -1,0 +1,10 @@
+pandas
+datasets
+pydantic
+pydantic-settings
+pyarrow
+fastapi
+uvicorn
+groq
+streamlit
+pytest

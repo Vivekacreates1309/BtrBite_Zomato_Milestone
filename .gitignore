@@ -1,0 +1,49 @@
+# ──────────────── Environment & Secrets ────────────────
+.env
+.env.local
+.env.*.local
+
+# ──────────────── Python ────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+*.egg
+dist/
+build/
+.eggs/
+*.whl
+.venv/
+venv/
+env/
+
+# ──────────────── Data (large files) ────────────────
+data/*.parquet
+data/*.csv
+data/*.zip
+
+# ──────────────── Testing ────────────────
+.pytest_cache/
+htmlcov/
+.coverage
+coverage.xml
+
+# ──────────────── Node / Frontend ────────────────
+node_modules/
+frontend/dist/
+frontend/dist-ssr/
+*.local
+
+# ──────────────── IDE & Editor ────────────────
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# ──────────────── OS ────────────────
+.DS_Store
+Thumbs.db
+desktop.ini

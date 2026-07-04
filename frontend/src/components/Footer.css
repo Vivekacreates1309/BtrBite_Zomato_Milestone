@@ -1,0 +1,16 @@
+.footer {
+  margin-top: auto;
+  padding: var(--space-8) var(--margin-mobile);
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-text {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.footer-highlight {
+  color: var(--secondary);
+  font-weight: 600;
+}

@@ -1,0 +1,298 @@
+/* ============================================================
+   BtrBite — Design System & Global Styles
+   Based on DESIGN.md: Modern Glassmorphism / Deep Night Spectrum
+   ============================================================ */
+
+/* --- Google Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+/* --- CSS Custom Properties (Design Tokens) --- */
+:root {
+  /* Surfaces */
+  --surface: #121222;
+  --surface-dim: #121222;
+  --surface-bright: #38374a;
+  --surface-container-lowest: #0c0c1d;
+  --surface-container-low: #1a1a2b;
+  --surface-container: #1e1e2f;
+  --surface-container-high: #29283a;
+  --surface-container-highest: #333345;
+
+  /* Background gradient */
+  --bg-gradient-start: #0A0A1A;
+  --bg-gradient-end: #12122A;
+
+  /* Primary (Zomato Red family) */
+  --primary: #ffb3b1;
+  --on-primary: #680011;
+  --primary-container: #ff535a;
+  --on-primary-container: #5b000e;
+  --inverse-primary: #bb162c;
+
+  /* Secondary (Indigo Glow) */
+  --secondary: #c0c1ff;
+  --on-secondary: #1000a9;
+  --secondary-container: #3131c0;
+  --on-secondary-container: #b0b2ff;
+
+  /* Tertiary (Gold / Rating) */
+  --tertiary: #f9bd22;
+  --on-tertiary: #402d00;
+  --tertiary-container: #b88900;
+
+  /* Text */
+  --on-surface: #e3e0f8;
+  --on-surface-variant: #e4bebc;
+  --text-muted: #94A3B8;
+
+  /* Borders */
+  --outline: #ab8987;
+  --outline-variant: #5b403f;
+
+  /* Error */
+  --error: #ffb4ab;
+  --error-container: #93000a;
+
+  /* Glass */
+  --glass-bg: rgba(30, 30, 47, 0.6);
+  --glass-bg-hover: rgba(30, 30, 47, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-border-hover: rgba(255, 255, 255, 0.15);
+  --glass-blur: 12px;
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, var(--primary-container), var(--secondary-container));
+  --gradient-sparkle: linear-gradient(135deg, #ff535a, #c0c1ff);
+  --gradient-brand: linear-gradient(135deg, #ffb3b1, #c0c1ff);
+
+  /* Glow */
+  --glow-primary: 0 0 20px rgba(255, 83, 90, 0.15);
+  --glow-primary-strong: 0 0 30px rgba(255, 83, 90, 0.25);
+  --glow-secondary: 0 0 20px rgba(192, 193, 255, 0.15);
+
+  /* Spacing (8px grid) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --gutter: 24px;
+  --margin-mobile: 20px;
+  --margin-desktop: 64px;
+  --container-max: 1280px;
+
+  /* Border Radius */
+  --rounded-sm: 0.25rem;
+  --rounded: 0.5rem;
+  --rounded-md: 0.75rem;
+  --rounded-lg: 1rem;
+  --rounded-xl: 1.5rem;
+  --rounded-full: 9999px;
+
+  /* Typography */
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Outfit', sans-serif;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 400ms ease;
+}
+
+/* --- Reset & Base --- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--on-surface);
+  background: linear-gradient(180deg, var(--bg-gradient-start), var(--bg-gradient-end));
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- Typography Classes --- */
+.headline-xl {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.headline-lg {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.headline-md {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.body-lg {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.body-md {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.label-md {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.05em;
+}
+
+/* --- Utility --- */
+.gradient-text {
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--rounded-lg);
+}
+
+.glass:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
+}
+
+/* --- Scrollbar --- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface-container-lowest);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--outline-variant);
+  border-radius: var(--rounded-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--outline);
+}
+
+/* --- Animations --- */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes breathe {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(255, 83, 90, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(255, 83, 90, 0.25);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Responsive Typography --- */
+@media (max-width: 768px) {
+  .headline-xl {
+    font-size: 32px;
+  }
+
+  .headline-lg {
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .headline-md {
+    font-size: 20px;
+  }
+}

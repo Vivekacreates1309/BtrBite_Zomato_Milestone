@@ -1,0 +1,239 @@
+/* ================================= */
+/*         Restaurant Card           */
+/* ================================= */
+
+.restaurant-card {
+  position: relative;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--rounded-lg);
+  overflow: hidden;
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+  animation: fadeUp 0.5s ease both;
+  cursor: default;
+  display: flex;
+  flex-direction: column;
+}
+
+.restaurant-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--glass-border-hover);
+  box-shadow: var(--glow-primary);
+}
+
+/* Gradient border glow */
+.card-border-glow {
+  position: absolute;
+  inset: -1px;
+  border-radius: var(--rounded-lg);
+  background: linear-gradient(135deg, rgba(255, 83, 90, 0.15), rgba(49, 49, 192, 0.15));
+  z-index: 0;
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  pointer-events: none;
+}
+
+.restaurant-card:hover .card-border-glow {
+  opacity: 1;
+}
+
+/* ================================= */
+/*           Hero Image              */
+/* ================================= */
+
+.card-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.restaurant-card:hover .card-image {
+  transform: scale(1.06);
+}
+
+.card-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 40%,
+    rgba(10, 10, 25, 0.8) 100%
+  );
+  pointer-events: none;
+}
+
+/* Fallback when image fails */
+.card-image-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(255, 83, 90, 0.15) 0%, rgba(49, 49, 192, 0.2) 100%);
+}
+
+.fallback-icon {
+  font-size: 48px;
+  opacity: 0.4;
+}
+
+/* ================================= */
+/*     Rank Badge (on image)         */
+/* ================================= */
+
+.rank-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  border-radius: var(--rounded-full);
+  background: rgba(255, 83, 90, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 3;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.rank-number {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 13px;
+  color: #ffffff;
+}
+
+.rank-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ================================= */
+/*     Rating Badge (on image)       */
+/* ================================= */
+
+.image-rating-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 4px 10px;
+  border-radius: var(--rounded-full);
+  background: rgba(18, 18, 40, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 3;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.image-rating-badge .star-icon {
+  font-size: 14px;
+  color: var(--tertiary);
+}
+
+.image-rating-badge .rating-num {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 13px;
+  color: #ffffff;
+}
+
+/* ================================= */
+/*           Card Body               */
+/* ================================= */
+
+.card-body {
+  position: relative;
+  z-index: 2;
+  padding: var(--space-5) var(--space-5) var(--space-6);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.card-name {
+  color: var(--on-surface);
+  margin-bottom: var(--space-1);
+  font-size: 18px;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+/* Location + Cost subtitle */
+.card-subtitle {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: var(--space-3);
+  line-height: 1.4;
+}
+
+/* ================================= */
+/*         Cuisine Chips             */
+/* ================================= */
+
+.cuisine-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.cuisine-chip {
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: var(--rounded-full);
+  background: rgba(192, 193, 255, 0.1);
+  border: 1px solid rgba(192, 193, 255, 0.15);
+  color: var(--secondary);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: all var(--transition-fast);
+}
+
+.cuisine-chip:hover {
+  background: rgba(192, 193, 255, 0.2);
+  box-shadow: 0 0 8px rgba(192, 193, 255, 0.15);
+}
+
+/* ================================= */
+/*        AI Explanation             */
+/* ================================= */
+
+.ai-explanation {
+  display: flex;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  background: rgba(255, 83, 90, 0.05);
+  border-radius: var(--rounded-md);
+  border-left: 3px solid var(--primary-container);
+  margin-top: auto;
+}
+
+.ai-icon {
+  font-size: 16px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.ai-text {
+  font-size: 13px;
+  font-style: italic;
+  color: var(--on-surface-variant);
+  line-height: 1.5;
+}
