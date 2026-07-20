@@ -11,12 +11,22 @@ from ..services.filtering import CandidateSelector
 from ..services.llm import LLMClient
 from ..services.enrichment import ResponseParser, RecommendationEnricher
 
+import os
+
 app = FastAPI(title="BtrBite AI Recommendation API", version="1.0.0")
 
-# CORS — allow React dev server
+# CORS — allow local dev + production Vercel domain
+allowed_origins = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+]
+frontend_url = os.getenv("FRONTEND_URL", "")
+if frontend_url:
+    allowed_origins.append(frontend_url)
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+    allow_origins=allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
